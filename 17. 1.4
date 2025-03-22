@@ -1,0 +1,31 @@
+start
+new a number
+set a 25
+new b number
+set b 15
+new c number
+set c 10
+new d number
+set d 5
+new x number
+set x 17
+if (d > x)
+    log string "d > x"
+else
+    if (c > x)
+        log string "c > x > d"
+    else
+        if (b > x)
+            log string "b > x > c"
+        else
+            if (a > x)
+                log string "a > x > b"
+            else
+                log string "x > a"
+close
+delete a
+delete b
+delete c
+delete d
+delete x
+finish

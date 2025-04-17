@@ -1,0 +1,55 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    // Пример входных данных
+    char lines[3][30] = {
+        "/test.txt",
+        "Привет",
+        "Мир"
+    };
+
+    // 1. Выводим имя файла
+    printf("Имя файла: %s\n", lines[0]);
+
+    // 2. Собираем содержимое
+    char content[100];
+    int index = 0;
+    for (int i = 1; i < 3; i++) {
+        int j = 0;
+        while (lines[i][j] != '\0') {
+            content[index++] = lines[i][j++];
+        }
+        content[index++] = '\n';
+    }
+    content[index] = '\0';
+
+    // 3. Выводим содержимое
+    printf("\nСодержимое файла:\n%s", content);
+
+    // 4. Поиск слова "Привет"
+    char target[] = "Привет";
+    int found = 0;
+
+    for (int i = 0; content[i] != '\0'; i++) {
+        int match = 1;
+        for (int j = 0; target[j] != '\0'; j++) {
+            if (content[i + j] != target[j]) {
+                match = 0;
+                break;
+            }
+        }
+        if (match) {
+            found = 1;
+            break;
+        }
+    }
+
+    if (found) {
+        printf("\nСлово \"%s\" найдено в тексте\n", target);
+    } else {
+        printf("\nСлово \"%s\" не найдено\n", target);
+    }
+
+    return 0;
+}
